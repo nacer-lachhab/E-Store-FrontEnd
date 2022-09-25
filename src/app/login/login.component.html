@@ -1,0 +1,24 @@
+<div class="container mt-5">
+    <!--la moitie de l ecran/bootstrap ecran=12 | decaler 3 colonne:pour occuper le centre-->
+    <div class="col-md-6 offset-md-3"> 
+        <div class="card">
+            <div class="card-header">Authentication</div>
+            <div class="text-danger" *ngIf="errorMessage">{{errorMessage}}</div>
+            <div class="card-body">
+                <form [formGroup]="this.userFormGroup" (ngSubmit)="handleLoging()">
+                    <div class="mb-3">
+                        <label class="form-label">UserName:</label>
+                        <input type="text" formControlName="userName" class="form-control">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Password:</label>
+                        <input type="password" formControlName="password" class="form-control">
+                    </div>
+                    <div>
+                        <button class="btn btn-primary" type="submit">Login</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
