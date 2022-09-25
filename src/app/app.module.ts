@@ -6,17 +6,19 @@ import { AppComponent } from './app.component';
 import { ProductsComponent } from './products/products.component';
 import { CostumersComponent } from './costumers/costumers.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ProductsComponent,
-    CostumersComponent
+    CostumersComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule, /*gere le routage*/
-    ReactiveFormsModule
+    ReactiveFormsModule /* Reactive Forms pour une meilleur gestion de forms sur angular */
   ],
   providers: [],
   bootstrap: [AppComponent]
