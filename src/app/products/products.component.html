@@ -1,0 +1,71 @@
+<div class="container p-3">
+    <!--<div *ngIf="errorMessage" class="text-danger">{{errorMessage}}</div>-->
+    <ng-template #errors> 
+        <!--ne va s executer que le cas du else de *ngIf, sa position n est pas imprtante-->
+       <div class="text-danger">{{errorMessage}}</div> 
+       <!--text-danger juste pour qu elle s affiche en rouge-->
+    </ng-template>
+    <div class="card" *ngIf="products; else errors">
+        <div class="card-header">Products List:</div>
+        <div class="card-body">
+            <form [formGroup]="searchFormGroup" (ngSubmit)="submitSearchProducts()">
+                <div class="input-group">
+                    <label class="input-group-text">Keyword</label>
+                    <input type="text" class="form-control" formControlName="keyword">
+                    <button class="btn btn-info">
+                        <i class="bi bi-search"></i>
+                    </button>
+                </div>
+            </form>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Price</th>
+                        <th>Quantity</th>
+                        <th>Promotion</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let p of products">
+                        <td>{{p.id}}</td>
+                        <td>{{p.name}}</td>
+                        <td>{{p.price}}$</td>
+                        <td>{{p.quantite}}</td>
+                        <td *ngIf="(p.promotion==false)">
+                            <i class="bi bi-bookmark-x" style="font-size: 2rem; color: rgb(209, 27, 27);"></i>
+                        </td>
+                        <td *ngIf="p.promotion">
+                            <i class="bi bi-bookmark-star-fill"
+                             style="font-size: 2rem; color: rgb(17, 230, 17);"
+                            (click)="deleteProduct(p)" >
+                            </i>
+                        </td>
+                        <td>
+                            <button class="btn" 
+                            [ngClass]="p.promotion==true?'btn-warning':'btn-danger'"
+                            (click)="handelPromotion(p)">
+                                <span *ngIf="(p.promotion==false)">Enable Promo</span>
+                                <span *ngIf="(p.promotion==true)">Disable Promo</span>
+                            </button>
+                        </td>
+                        <td>
+                            <button class="btn btn-danger" (click)="deleteProduct(p)">
+                                <i class="bi bi-trash"></i>
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <ul class="nav nav-pills">
+                <li *ngFor="let t of [].constructor(this.totalPages); let x=index">
+                    <a (click)="this.goToPage(x)"
+                    [ngClass]="x==currentPage?'btn-info':'btn-outline-info'" class="btn ms-1 mt-1">
+                        {{x+1}}
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
