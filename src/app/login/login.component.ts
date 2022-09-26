@@ -24,7 +24,7 @@ export class LoginComponent implements OnInit {
       next:(appUser)=>{
         this.authService.authenticateUser(appUser).subscribe({
           next:()=>{
-            this.router.navigateByUrl("/products");
+            this.router.navigateByUrl("/admin/products");
           }
         });
       },
