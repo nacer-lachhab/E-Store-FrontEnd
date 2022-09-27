@@ -38,23 +38,24 @@
                         </td>
                         <td *ngIf="p.promotion">
                             <i class="bi bi-bookmark-star-fill"
-                             style="font-size: 2rem; color: rgb(17, 230, 17);"
-                            (click)="deleteProduct(p)" >
+                             style="font-size: 2rem; color: rgb(17, 230, 17);" >
                             </i>
                         </td>
-                        <td>
-                            <button class="btn" 
-                            [ngClass]="p.promotion==true?'btn-warning':'btn-danger'"
-                            (click)="handelPromotion(p)">
-                                <span *ngIf="(p.promotion==false)">Enable Promo</span>
-                                <span *ngIf="(p.promotion==true)">Disable Promo</span>
-                            </button>
-                        </td>
-                        <td>
-                            <button class="btn btn-danger" (click)="deleteProduct(p)">
-                                <i class="bi bi-trash"></i>
-                            </button>
-                        </td>
+                        <div *ngIf="authService.hasRole('ADMIN')">
+                            <td>
+                                <button class="btn" 
+                                [ngClass]="p.promotion==true?'btn-warning':'btn-danger'"
+                                (click)="handelPromotion(p)">
+                                    <span *ngIf="(p.promotion==false)">Enable Promo</span>
+                                    <span *ngIf="(p.promotion==true)">Disable Promo</span>
+                                </button>
+                            </td>
+                            <td>
+                                <button class="btn btn-danger" (click)="deleteProduct(p)">
+                                    <i class="bi bi-trash"></i>
+                                </button>
+                            </td>
+                        </div>
                     </tr>
                 </tbody>
             </table>

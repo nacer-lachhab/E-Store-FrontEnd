@@ -43,4 +43,10 @@ export class AuthenticationService {
     //if(!this.authenticatedUser) return throwError(()=>new Error("undifined authenticatedUser!!!"));
     return this.authenticatedUser!.roles.includes(role);
   }
+
+  public logout():Observable<boolean>{
+    this.authenticatedUser=undefined;
+    localStorage.removeItem("authUser");
+    return of(true);
+  }
 }
