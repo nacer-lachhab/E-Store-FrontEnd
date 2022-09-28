@@ -1,0 +1,39 @@
+<div class="container mt-3 col-md-6 offset-md-3">
+    <form [formGroup]="productFormGroup" (ngSubmit)="handleAddProduct()">
+        <div class="mb-3">
+            <!--structure of field validators {{productFormGroup.controls['name'].errors|json}}-->
+            <label>Name:</label>
+            <input type="text" formControlName="name" class="form-control">
+            <small *ngIf="(productFormGroup.controls['name'].errors)
+            && (productFormGroup.controls['name'].touched)" class="text-danger">
+            {{getErrorMessage('Name',this.productFormGroup.controls['name'].errors)}}
+            </small>
+        </div>
+
+        <div class="mb-3">
+            <label>Price:</label>
+            <input type="text" formControlName="price" class="form-control">
+            <small *ngIf="(productFormGroup.controls['price'].errors)
+            && (productFormGroup.controls['price'].touched)" class="text-danger">
+            {{getErrorMessage('Price',this.productFormGroup.controls['price'].errors)}}
+            <!--The small element represents side comments such as small print-->
+            <!--afficher le msg quand le input est touché, et qu il y a erreur de validation-->
+            </small>
+        </div>
+
+        <div class="mb-3">
+            <label>Quantite:</label>
+            <input type="text" formControlName="quantite" class="form-control">
+            <small *ngIf="(productFormGroup.controls['quantite'].errors)
+            && (productFormGroup.controls['quantite'].touched)" class="text-danger">
+            {{getErrorMessage('Quantite',this.productFormGroup.controls['quantite'].errors)}}
+            </small>
+        </div>
+
+        <div class="mb-3">
+            <label>Promotion:</label>
+            <input type="checkbox" formControlName="promotion" class="form-check">
+        </div>
+        <button class="btn btn-info" type="submit" [disabled]="this.productFormGroup.invalid">Save</button>
+    </form>
+</div>

@@ -1,5 +1,7 @@
 <div class="container p-3">
-    <!--<div *ngIf="errorMessage" class="text-danger">{{errorMessage}}</div>-->
+    <nav class="p-2 m-2 border border-info" *ngIf="authService.hasRole('ADMIN')">
+        <button class="btn btn btn-outline-info" (click)="handleNewProduct()">Add-Product</button>
+    </nav>
     <ng-template #errors> 
         <!--ne va s executer que le cas du else de *ngIf, sa position n est pas imprtante-->
        <div class="text-danger">{{errorMessage}}</div> 

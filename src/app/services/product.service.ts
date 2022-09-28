@@ -83,4 +83,13 @@ export class ProductService {
     return of({products:result,page:numPage,size:size,totalPages:totalPages});
     //return of(result);
   }
+
+  valuesToProduct(x:any):Observable<Product>{
+    console.log("valuesToProduct called");
+    let p:Product={id:UUID.UUID(),name:x.name,price:x.price,quantite:x.quantite,promotion:x.promotion};
+    console.log("tototto11");
+    console.log(typeof(p));
+    console.log('tototto22');
+    return of(p);
+  }
 }

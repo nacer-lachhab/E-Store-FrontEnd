@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Product } from '../model/product';
 import { AuthenticationService } from '../services/authentication.service';
 import { ProductService } from '../services/product.service';
@@ -44,6 +45,10 @@ export class ProductsComponent implements OnInit {
         //console.log(this.totalPages);
       }
     });
+  }
+
+  handleNewProduct(){
+    this.router.navigateByUrl("/admin/newProduct");
   }
 
   deleteProduct(p:Product){
@@ -106,7 +111,8 @@ export class ProductsComponent implements OnInit {
 
   constructor(private productService:ProductService,
               private fb:FormBuilder,
-              public authService:AuthenticationService) {}
+              public authService:AuthenticationService,
+              private router:Router) {}
 
   ngOnInit(): void {
     this.getPageOfProducts();
