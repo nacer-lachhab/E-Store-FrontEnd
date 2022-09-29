@@ -59,6 +59,10 @@ export class ProductsComponent implements OnInit {
     this.goToPage(this.currentPage);
   }
 
+  editProduct(p:Product){
+    this.router.navigateByUrl("/admin/editProduct/"+p.id)
+  }
+
   handelPromotion(p:Product){
     let confirmation=confirm("sure you want change Promotion status of this element!!");
     if(confirmation==false) return;

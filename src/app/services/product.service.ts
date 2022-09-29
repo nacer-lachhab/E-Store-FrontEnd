@@ -92,4 +92,34 @@ export class ProductService {
     console.log('tototto22');
     return of(p);
   }
+
+  getProductById(id:string):Observable<Product>{
+    let product=this.products.find(e=>e.id==id);
+    if(product!=undefined) return of(product);
+    else return throwError(()=>new Error("no Product with this id found"));
+  }
+
+  updateProduct(newProductValue:Product):Observable<boolean>{
+    console.log('updateProduct called');
+    console.log('..........');
+    console.log(newProductValue);
+    console.log('.........');
+    
+    let productToUpdate=this.products.find(p=>p.id==newProductValue.id);
+    if(productToUpdate!=undefined){
+      let index = this.products.indexOf(productToUpdate);
+      this.products[index]=newProductValue;
+      console.log('hahahahah');
+      
+      console.log(newProductValue);
+      console.log('*******');
+      console.log(this.products);
+      console.log('*******');
+      return of(true)
+    }else{
+      console.log('bleeeeeemmme');
+      
+      return throwError(()=>new Error('Product to update not found...'));
+    }
+  }
 }
