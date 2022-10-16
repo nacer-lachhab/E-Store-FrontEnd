@@ -1,6 +1,7 @@
-<div class="container p-3">
-    <nav class="p-2 m-2 border border-info" *ngIf="authService.hasRole('ADMIN')">
-        <button class="btn btn btn-outline-info" (click)="handleNewProduct()">Add-Product</button>
+<div class="container p-2">
+    <nav class="p-1 m-2 border border-info" *ngIf="authService.hasRole('ADMIN')">
+        <button class="m-1 btn btn btn-outline-info" (click)="handleNewProduct()">Add-Product</button>
+        <button class="m-1 btn btn btn-outline-info" (click)="null">Promoted-Products</button>
     </nav>
     <ng-template #errors> 
         <!--ne va s executer que le cas du else de *ngIf, sa position n est pas imprtante-->

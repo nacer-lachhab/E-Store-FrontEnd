@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { UUID } from 'angular2-uuid';
 import { Observable, of, throwError } from 'rxjs';
 import { PageProduct, Product } from '../model/product';
+import { HttpProductsService } from './http-products.service';
 
 @Injectable({
   providedIn: 'root'
@@ -10,6 +11,7 @@ import { PageProduct, Product } from '../model/product';
 export class ProductService {
 
   products! : Array<Product>;
+  test : any;
 
   constructor() { 
     this.products = [
@@ -25,6 +27,8 @@ export class ProductService {
       this.products.push({id:UUID.UUID(), name:"printer X"+i,price:i*500,quantite:10*i,promotion:false});
       this.products.push({id:UUID.UUID(), name:"smart phone Z"+i,price:i*400,quantite:i*10,promotion:true});
     }
+    
+    console.log("+-+-+-+**//");
   }
 
   public get():Observable<Product[]>{

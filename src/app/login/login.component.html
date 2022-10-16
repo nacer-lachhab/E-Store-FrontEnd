@@ -1,5 +1,10 @@
 <div class="container mt-5">
     <!--la moitie de l ecran/bootstrap ecran=12 | decaler 3 colonne:pour occuper le centre-->
+    <button (click)="getBackData()">conn-BackEnd</button>
+    <div *ngFor="let data of backData">
+       <div> {{data|json}}</div>
+    </div>
+
     <div class="col-md-6 offset-md-3"> 
         <div class="card">
             <div class="card-header">Authentication</div>
